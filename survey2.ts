@@ -1,13 +1,20 @@
-import inquirer from "inquirer";
-import {
-  validationFactory,
-  checkEmptyString,
-  checkEmail,
-  checkExp,
-} from "./lib/function.js";
+import inquirer, { QuestionCollection } from "inquirer";
 
-const questions = [
-  // Type your question here
+const validationFactory = (checker: any, errMsg: String) => {
+  return (input: string) => (checker(input) ? true : errMsg);
+};
+
+const checkEmptyString = (input: string) => {
+  return input.trim().length > 0;
+};
+const checkEmail = (input: string) => {
+  return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input);
+};
+const checkExp = (isExp: boolean) => {
+  return isExp == "yes";
+};
+
+const questions: QuestionCollection = [
   {
     type: "input",
     name: "firstName",
@@ -55,19 +62,6 @@ const questions = [
   },
 ];
 
-// run your command
-// inquirer
-//   .prompt(questions)
-//   .then((answers) => {
-//     console.log(JSON.stringify(answers, null, 2));
-//   })
-//   .catch((error) => {
-//     if (error.isTtyError) {
-//       console.log("Your console environment is not supported!");
-//     } else {
-//       console.log(error);
-//     }
-//   });
 inquirer
   .prompt(questions)
   .then((answers) => {
