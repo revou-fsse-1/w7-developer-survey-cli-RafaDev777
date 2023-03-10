@@ -21,12 +21,7 @@ const questions = [
       `Hello ${answer.firstName}, what is your email address?`,
     validate: validationFactory(checkEmail, "Please enter valid email address"),
   },
-  {
-    type: "list",
-    name: "isExperienced",
-    message: "Are you an experienced developer?",
-    choices: ["yes", "no"],
-  },
+
   {
     type: "list",
     name: "isExp",
