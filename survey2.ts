@@ -10,7 +10,7 @@ const checkEmptyString = (input: string) => {
 const checkEmail = (input: string) => {
   return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(input);
 };
-const checkExp = (isExp: boolean) => {
+const checkExp = (isExp: string) => {
   return isExp == "yes";
 };
 
